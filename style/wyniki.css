@@ -1,0 +1,54 @@
+@import url(//fonts.googleapis.com/css?family=Montserrat);
+* {
+	font-family: "Montserrat";
+	font-weight: 900;
+}
+
+.tabela-wynikow {
+	display: grid;
+	grid-template-columns: repeat(2, 30%);
+	grid-template-rows: repeat(1);
+	margin: auto;
+	text-align: center;
+	justify-content: center;
+}
+
+.score {
+	text-align: center;
+	font-size: 25px;
+}
+
+.nick {
+	text-align: center;
+	font-size: 25px;
+}
+.position {
+	text-align: center;
+	font-size: 25px;
+}
+h1 {
+	font-size: 50px;
+	border-bottom: 2px solid black;
+}
+
+li {
+	list-style: none;
+	margin: 20px 0;
+}
+a {
+	text-decoration: none;
+	padding: 15px 30px;
+	color: black;
+	font-size: 20px;
+	transition: 0.5s;
+}
+a:hover {
+	color: rgba(175, 9, 0);
+	letter-spacing: 2px;
+	font-weight: 900;
+}
+
+.nick-table {
+	border-right: 2px solid black;
+	margin: 20px 0;
+}
