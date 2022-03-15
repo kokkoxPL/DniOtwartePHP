@@ -11,29 +11,34 @@ $username = "root";
 $password = "";
 $baza = "dni_otwarte";
 $tabela = "uczniowie";
-$dane = $_POST["dane"];
-$nick = $_POST["nick"];
-$szkola = $_POST["szkola"];
-$miasto = $_POST["miasto"];
-$wynik = 0;
-
-for ($i = 1; $i <= 10; $i++) {
-  if (isset($_POST["answer".$i])) {
-    $wynik += odp($_POST["answer".$i]);
-  };
-};
+$wynikiNick = [];
+$wynikiWynik = [];
 
 $sql = new mysqli($server, $username, $password);
 $sql->query("CREATE DATABASE IF NOT EXISTS $baza;");
 $sql = new mysqli($server, $username, $password, $baza);
 $sql->query("CREATE TABLE IF NOT EXISTS $tabela(id int AUTO_INCREMENT PRIMARY KEY, dane varchar(20), nick varchar(20), szkola varchar(40), miasto varchar(20), wynik int);");
-$sql->query("INSERT INTO $tabela(dane, nick, szkola, miasto, wynik) VALUES('$dane', '$nick', '$szkola', '$miasto', '$wynik');");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  $dane = $_POST["dane"];
+  $nick = $_POST["nick"];
+  $szkola = $_POST["szkola"];
+  $miasto = $_POST["miasto"];
+
+  $wynik = 0;
+  for ($i = 1; $i <= 10; $i++) {
+    if (isset($_POST["answer".$i])) {
+      $wynik += odp($_POST["answer".$i]);
+    };
+  };
+
+  $sql->query("INSERT INTO $tabela(dane, nick, szkola, miasto, wynik) VALUES('$dane', '$nick', '$szkola', '$miasto', '$wynik');");
+  
+  unset($_POST);
+  header("Location: ".$_SERVER['PHP_SELF']);
+}
 
 $wyniki = $sql->query("SELECT nick, wynik FROM $tabela ORDER BY wynik DESC");
-
-$wynikiNick = [];
-$wynikiWynik = [];
-
 while($info = $wyniki->fetch_assoc()) {
   $wynikiNick[] = $info["nick"];
   $wynikiWynik[] = $info["wynik"];
@@ -50,6 +55,11 @@ $sql->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style/wyniki.css" />
   <title>Wyniki</title>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, location.href);
+    }
+  </script>
 </head>
 <body>
 			<ul>
