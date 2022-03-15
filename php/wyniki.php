@@ -54,6 +54,7 @@ $sql->close();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style/wyniki.css" />
+  <link rel="shortcut icon" href="../images/logo-medium.png" />
   <title>Wyniki</title>
   <script>
     if (window.history.replaceState) {
