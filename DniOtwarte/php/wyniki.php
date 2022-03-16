@@ -1,9 +1,10 @@
 <?php
-function odp($ans) {
-  if($ans == "1") {
+function odp($ans)
+{
+  if ($ans == "1") {
     return 1;
   }
-    return 0;
+  return 0;
 }
 
 $server = "localhost";
@@ -15,7 +16,7 @@ $cookie = "Cookies";
 $twojWynik = [];
 $sql = new mysqli($server, $username, $password, $baza);
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dane = $_POST["dane"];
   $nick = $_POST["nick"];
   $szkola = $_POST["szkola"];
@@ -29,15 +30,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $sql->query("INSERT INTO $tabela(dane, nick, szkola, miasto, wynik) VALUES('$dane', '$nick', '$szkola', '$miasto', '$wynik');");
 
-  setcookie($cookie , $sql->insert_id, time() + (3600), "/");
+  setcookie($cookie, $sql->insert_id, time() + (3600), "/");
 
   unset($_POST);
-  header("Location: ".$_SERVER['PHP_SELF']);
+  header("Location: " . $_SERVER['PHP_SELF']);
 }
 $id = $_COOKIE["$cookie"];
 $wyniki = $sql->query("SELECT wynik FROM $tabela WHERE id = $id");
 
-while($info = $wyniki->fetch_assoc()) {
+while ($info = $wyniki->fetch_assoc()) {
   $twojWynik[0] = $info["wynik"];
 }
 
@@ -65,8 +66,8 @@ $sql->close();
       <div class="nick">
         <h1>PSEUDONIM</h1>
         <div class="nick-table">
-        <table id="table1">
-        </table>
+          <table id="table1">
+          </table>
         </div>
       </div>
     </div>
@@ -76,8 +77,8 @@ $sql->close();
         <h1>WYNIK</h1>
         <div class="score-table">
 
-        <table id="table2">
-        </table>
+          <table id="table2">
+          </table>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ $sql = new mysqli($server, $username, $password, $baza);
 $sql->query("CREATE TABLE IF NOT EXISTS $tabela(id int AUTO_INCREMENT PRIMARY KEY, dane varchar(40), nick varchar(20), szkola varchar(40), miasto varchar(20), wynik int);");
 
 $wyniki = $sql->query("SELECT nick, wynik FROM $tabela ORDER BY wynik DESC");
-while($info = $wyniki->fetch_assoc()) {
+while ($info = $wyniki->fetch_assoc()) {
   $wynikiNick[] = $info["nick"];
   $wynikiWynik[] = $info["wynik"];
 }
@@ -42,13 +42,13 @@ $sql->close();
       <div class="nick">
         <h1>PSEUDONIM</h1>
         <div class="nick-table">
-        <table id="table1">
-           <?php
-          foreach ($wynikiNick as $i) {
-            print "<tr>". "<td class='nicktr'>" . $i ."</td>". "</tr>";
-          }
-          ?>
-        </table>
+          <table id="table1">
+            <?php
+            foreach ($wynikiNick as $i) {
+              print "<tr>" . "<td class='nicktr'>" . $i . "</td>" . "</tr>";
+            }
+            ?>
+          </table>
         </div>
       </div>
     </div>
@@ -58,13 +58,13 @@ $sql->close();
         <h1>WYNIK</h1>
         <div class="score-table">
 
-        <table id="table2">
-              <?php
-              foreach ($wynikiWynik as $i) {
-                print "<tr>". "<td class  ='scoretr'>" . $i ."</td>". "</tr>";
-              }
-              ?>
-        </table>
+          <table id="table2">
+            <?php
+            foreach ($wynikiWynik as $i) {
+              print "<tr>" . "<td class  ='scoretr'>" . $i . "</td>" . "</tr>";
+            }
+            ?>
+          </table>
         </div>
       </div>
     </div>
