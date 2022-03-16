@@ -49,49 +49,49 @@ $sql->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style/wyniki.css" />
-  <link rel="shortcut icon" href="../images/logo-medium.png" />
+
   <title>Wyniki</title>
-  <script>
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, location.href);
-    }
-  </script>
 </head>
+
 <body>
-			<ul>
-				<li><a href="../index.html"> POWRÓT NA STRONĘ GŁÓWNĄ</a></li>
-			</ul>
+  <ul>
+    <li><a href="../index.html"> POWRÓT NA STRONĘ GŁÓWNĄ</a></li>
+  </ul>
   <div class="tabela-wynikow">
     <div class="nickHeader">
       <div class="nick">
-      <h1>PSEUDONIM</h1>
-        <div class="nick-table">
-              <?php 
-              foreach($wynikiNick as $i) {
-                print $i .  "<br>" . "<br>";
-              }
-              ?>
-          </div>
-    </div>
+        <h1>PSEUDONIM</h1>
+        <div class="nick-table" id="nick">
+          <?php
+          foreach ($wynikiNick as $i) {
+            print $i .  "<br>" . "<br>";
+          }
+          ?>
+        </div>
+      </div>
     </div>
 
     <div class="scoreHeader">
       <div class="score">
-      <h1>WYNIK</h1>
-        <div class="score-table">
-            <?php 
-              foreach($wynikiWynik as $i) {
-              print $i .  "<br>" . "<br>";
-              }
-              ?>
+        <h1>WYNIK</h1>
+        <div class="score-table" id="score">
+          <?php
+          foreach ($wynikiWynik as $i) {
+            print "<span>" . $i .  "<br>" . "<br></span>";
+          }
+          ?>
         </div>
       </div>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../scripts/wyniki.js"></script>
 </body>
+
 </html>

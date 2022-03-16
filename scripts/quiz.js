@@ -1,258 +1,50 @@
-const question1 = () => {
-	var form = document.getElementById("formularz");
-	var line1 = document.getElementById("line1");
-	var line2 = document.getElementById("line2");
-	var quiz = document.getElementById("quiz");
-	form.style.display = "none";
-	line1.style.display = "none";
-	line2.style.display = "none";
-	quiz.style.display = "block";
+var actualQuestion = 1;
+elements = [];
 
-	var question = document.getElementById("q-1");
-	var rest1 = document.getElementById("q-2");
-	var rest2 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
+for (let i = 0; i < 10; i++) {
+	elements.push({ question: document.getElementById("q-" + (i + 1)) });
+	elements[i].nbutton = elements[i].question.querySelector(".next");
+	elements[i].pbutton = elements[i].question.querySelector(".prev");
+	if (elements[i].nbutton !== null) {
+		elements[i].nbutton.addEventListener("click", () => {
+			actualQuestion += 1;
+			question(actualQuestion);
+		});
+	}
+	if (elements[i].pbutton !== null) {
+		elements[i].pbutton.addEventListener("click", () => {
+			actualQuestion -= 1;
+			question(actualQuestion);
+		});
+	}
+}
 
-	question.style.display = "block";
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
+const question = (x) => {
+	if (x === 0) {
+		document.getElementById("formularz").style.display = "none";
+		document.getElementById("line1").style.display = "none";
+		document.getElementById("line2").style.display = "none";
+		document.getElementById("quiz").style.display = "block";
+		x = 1;
+	}
+	for (let i = 0; i < elements.length; i++) {
+		if (elements[i].question.id === "q-" + x) {
+			console.log("elements[i].id = " + elements[i].id);
+			elements[i].question.style.display = "block";
+		} else {
+			elements[i].question.style.display = "none";
+		}
+	}
 };
 
-const question2 = () => {
-	var rest1 = document.getElementById("q-1");
-	var question = document.getElementById("q-2");
-	var rest2 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question3 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var question = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question4 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest3 = document.getElementById("q-3");
-	var question = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question5 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest4 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var question = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question6 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest3 = document.getElementById("q-3");
-	var rest4 = document.getElementById("q-4");
-	var rest5 = document.getElementById("q-5");
-	var question = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question7 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest6 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var question = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question8 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest7 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var question = document.getElementById("q-8");
-	var rest8 = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question9 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest8 = document.getElementById("q-3");
-	var rest3 = document.getElementById("q-4");
-	var rest4 = document.getElementById("q-5");
-	var rest5 = document.getElementById("q-6");
-	var rest6 = document.getElementById("q-7");
-	var rest7 = document.getElementById("q-8");
-	var question = document.getElementById("q-9");
-	var rest9 = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
-};
-
-const question10 = () => {
-	var rest1 = document.getElementById("q-1");
-	var rest2 = document.getElementById("q-2");
-	var rest3 = document.getElementById("q-3");
-	var rest4 = document.getElementById("q-4");
-	var rest5 = document.getElementById("q-5");
-	var rest6 = document.getElementById("q-6");
-	var rest7 = document.getElementById("q-7");
-	var rest8 = document.getElementById("q-8");
-	var rest9 = document.getElementById("q-9");
-	var question = document.getElementById("q-10");
-
-	question.style.display = "block";
-
-	rest1.style.display = "none";
-	rest2.style.display = "none";
-	rest3.style.display = "none";
-	rest4.style.display = "none";
-	rest5.style.display = "none";
-	rest6.style.display = "none";
-	rest7.style.display = "none";
-	rest8.style.display = "none";
-	rest9.style.display = "none";
+document.getElementById("send").onclick = () => verify(); //question(0);
+const verify = () => {
+	let nick = document.getElementById("nickName").value;
+	if (nick === "") {
+		alert("Wprowadź dane w polu Pseudonim !");
+	} else {
+		question(0);
+	}
 };
 
 $(function () {

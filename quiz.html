@@ -7,11 +7,9 @@
 		<link rel="shortcut icon" href="images/logo-medium.png" />
 
 		<link rel="stylesheet" href="style/quiz.css" />
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="scripts/quiz.js"></script>
 
-		<title>Quiz o ZSTiO</title>
+		<title>quiz o ZSTiO</title>
 	</head>
 	<body>
 		<div class="menu">
@@ -40,13 +38,13 @@
 				<div class="form">
 					<input type="text" placeholder="Imię i nazwisko (opcjonalnie)" class="dane" name="dane" /><br />
 
-					<input type="text" placeholder="Pseudonim" class="dane" name="nick" /><br />
+					<input type="text" placeholder="Pseudonim" class="dane" name="nick" id="nickName" /><br />
 
 					<input type="text" placeholder="Szkoła" class="dane" name="szkola" /><br />
 
 					<input type="text" placeholder="Miejscowość" class="dane" name="miasto" /><br />
 
-					<input type="button" value="Prześlij" class="send" id="send" onclick="question1()" />
+					<input type="button" value="Prześlij" class="send" id="send" onclick="verify()" />
 				</div>
 			</div>
 
@@ -333,5 +331,6 @@
 				</div>
 			</div>
 		</form>
+		<script src="scripts/quiz.js"></script>
 	</body>
 </html>
