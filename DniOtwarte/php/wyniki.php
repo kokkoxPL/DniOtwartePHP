@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dane = $_POST["dane"];
   $nick = $_POST["nick"];
   $szkola = $_POST["szkola"];
-  $miasto = $_POST["miasto"];
+  $miejscowosc = $_POST["miejscowosc"];
   $wynik = 0;
   for ($i = 1; $i <= 10; $i++) {
     if (isset($_POST["answer" . $i])) {
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     };
   };
 
-  $sql->query("INSERT INTO $tabela(dane, nick, szkola, miasto, wynik) VALUES('$dane', '$nick', '$szkola', '$miasto', '$wynik');");
+  $sql->query("INSERT INTO $tabela(dane, nick, szkola, miejscowosc, wynik) VALUES('$dane', '$nick', '$szkola', '$miejscowosc', '$wynik');");
 
   setcookie($cookie, $sql->insert_id, time() + (3600), "/");
 

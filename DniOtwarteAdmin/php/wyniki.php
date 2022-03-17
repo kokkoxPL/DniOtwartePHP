@@ -4,19 +4,23 @@ $username = "root";
 $password = "";
 $baza = "dni_otwarte";
 $tabela = "wyniki";
+$cookies = "tabela";
 $wynikiNick = [];
 $wynikiWynik = [];
 
 $sql = new mysqli($server, $username, $password);
 $sql->query("CREATE DATABASE IF NOT EXISTS $baza;");
 $sql = new mysqli($server, $username, $password, $baza);
-$sql->query("CREATE TABLE IF NOT EXISTS $tabela(id int AUTO_INCREMENT PRIMARY KEY, dane varchar(40), nick varchar(20), szkola varchar(40), miasto varchar(20), wynik int);");
+$sql->query("CREATE TABLE IF NOT EXISTS $tabela(id int AUTO_INCREMENT PRIMARY KEY, dane varchar(40), nick varchar(20), szkola varchar(40), miejscowosc varchar(20), wynik int);");
+
 
 $wyniki = $sql->query("SELECT nick, wynik FROM $tabela ORDER BY wynik DESC");
 while ($info = $wyniki->fetch_assoc()) {
   $wynikiNick[] = $info["nick"];
   $wynikiWynik[] = $info["wynik"];
 }
+
+header("Refresh: 3");
 
 $sql->close();
 ?>
